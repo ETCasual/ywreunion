@@ -1,3 +1,10 @@
-const IndexPage = () => <h1 className="text-red-500">Hello Next.js 👋</h1>;
+import { FirebaseProps } from '../config/firebaseProps';
+import { RankScreen } from '../routes/RankScreen';
+
+const IndexPage = () => (
+  <FirebaseProps>
+    <RankScreen />
+  </FirebaseProps>
+);
 
 export default IndexPage;

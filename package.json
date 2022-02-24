@@ -7,17 +7,20 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "firebase": "^9.6.7",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "reactfire": "^4.2.1",
+    "recharts": "^2.1.9"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
-    "autoprefixer": "^10.4.2",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
+    "autoprefixer": "^10.4.2",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.0.1",
