@@ -10,12 +10,12 @@ export const RankScreen: NextPage = () => {
   const dbRef = useDatabase();
 
   const gameRef = ref(dbRef, '/');
-  const { status, data } = useDatabaseObjectData<Record<string, boolean>>(gameRef);
+  const { status, data } = useDatabaseObjectData<Record<string, any>>(gameRef);
 
   return status === 'success' ? (
     <div className="w-[100vw] h-[100vh] overflow-hidden bg-[#126b98] px-[300px] pt-[100px] ">
       <ResponsiveContainer>
-        <BarChart barGap={'10%'} data={[data]}>
+        <BarChart barGap={'10%'} data={[data[data['currentLevel']]]}>
           <Bar dataKey={1} fill="#FDD000">
             <LabelList dataKey="1" position="insideTop" fill="#000" />
           </Bar>
