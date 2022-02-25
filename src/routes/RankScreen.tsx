@@ -15,16 +15,11 @@ export const RankScreen: NextPage = () => {
   return status === 'success' ? (
     <div className="w-[100vw] h-[100vh] overflow-hidden bg-[#126b98] px-[300px] pt-[100px] ">
       <ResponsiveContainer>
-        <BarChart barGap={'10%'} data={[data[data['currentLevel']]]}>
-          <Bar dataKey={1} fill="#FDD000">
-            <LabelList dataKey="1" position="insideTop" fill="#000" />
-          </Bar>
-          <Bar dataKey={2} fill="#FDD000">
-            <LabelList dataKey="2" position="insideTop" fill="#000" />
-          </Bar>
-          <Bar dataKey={3} fill="#FDD000">
-            <LabelList dataKey="3" position="insideTop" fill="#000" />
-          </Bar>
+        <BarChart barGap={'13%'} data={[data[data['currentLevel']]]}>
+          <Bar dataKey={1} fill="#FDD000"></Bar>
+          <Bar dataKey={2} fill="#FDD000"></Bar>
+          <Bar dataKey={3} fill="#FDD000"></Bar>
+          <Bar dataKey={4} fill="#FDD000"></Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>

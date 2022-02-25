@@ -2,20 +2,44 @@ import React from 'react';
 import { ref, set, increment as rtdbIncrement } from 'firebase/database';
 import { useDatabase, useDatabaseObjectData } from 'reactfire';
 
-const rep = [
-  {
-    repName: 'Rep 1',
-    index: 1,
-  },
-  {
-    repName: 'Rep 2',
-    index: 2,
-  },
-  {
-    repName: 'Rep 3',
-    index: 3,
-  },
-];
+const rep = {
+  1: [
+    {
+      repName: 'LF - TBC',
+      index: 1,
+    },
+    {
+      repName: 'PK - Cloud',
+      index: 2,
+    },
+    {
+      repName: 'TM - TBC',
+      index: 3,
+    },
+    {
+      repName: 'KL - Mei Shi',
+      index: 4,
+    },
+  ],
+  2: [
+    {
+      repName: 'LF - Zhi Ling',
+      index: 1,
+    },
+    {
+      repName: 'PK - Judy',
+      index: 2,
+    },
+    {
+      repName: 'TM - TBC',
+      index: 3,
+    },
+    {
+      repName: 'KL - Xin Kai',
+      index: 4,
+    },
+  ],
+};
 
 export const VoteScreen = () => {
   const dbRef = useDatabase();
@@ -44,19 +68,18 @@ export const VoteScreen = () => {
     <>
       {!submitted[data['currentLevel']] ? (
         <div className="grid grid-cols-1 gap-5 w-full h-[100vh] bg-[#F4F4F4] p-5">
-          {rep.map((r) => (
+          {rep[data['currentLevel']].map((r) => (
             <button
               className="flex items-center justify-center w-full h-full rounded-xl bg-[#FDD800] disabled:bg-[#FDF100]"
               key={r.index}
               onClick={() => {
-                alert(
-                  `You have already submitted for ${r.repName} in round ${data['currentLevel']} 😊`
-                );
                 increment(1, r.index);
                 toSubmit();
               }}
             >
-              <p>{r.repName}</p>
+              <p className="font-bold font-serif lg:text-2xl sm:text-xl text-lg">
+                Vote for {r.repName}
+              </p>
             </button>
           ))}
         </div>
