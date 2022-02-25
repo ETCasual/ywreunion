@@ -2,8 +2,6 @@ import React from 'react';
 import { ref, set, increment as rtdbIncrement } from 'firebase/database';
 import { useDatabase, useDatabaseObjectData } from 'reactfire';
 
-import { useGame } from '../store/useGame';
-
 const rep = [
   {
     repName: 'Rep 1',
@@ -30,28 +28,43 @@ export const VoteScreen = () => {
     return set(ref(dbRef, `/${data['currentLevel']}/${index}`), rtdbIncrement(amountToIncrement));
   };
 
-  const { submitted, addSubmitted } = useGame();
+  const submitted =
+    typeof window !== 'undefined'
+      ? localStorage.getItem('submitted') !== null
+        ? JSON.parse(localStorage.getItem('submitted'))
+        : localStorage.setItem('submitted', JSON.stringify({ 1: false }))
+      : null;
 
-  return status === 'success' ? (
+  const toSubmit = () => {
+    submitted[data['currentLevel']] = true;
+    localStorage.setItem('submitted', JSON.stringify(submitted));
+  };
+
+  return status === 'success' && typeof window !== 'undefined' ? (
     <>
-      <div className="grid grid-cols-1 gap-5 w-full h-[100vh] bg-[#F4F4F4] p-5">
-        {rep.map((r) => (
-          <button
-            className="flex items-center justify-center w-full h-full rounded-xl bg-[#FDD800] disabled:bg-[#FDF100]"
-            disabled={submitted.includes(data['currentLevel'])}
-            key={r.index}
-            onClick={() => {
-              alert(
-                `You have already submitted for ${r.repName} in round ${data['currentLevel']} 😊`
-              );
-              increment(1, r.index);
-              addSubmitted(data['currentLevel']);
-            }}
-          >
-            <p>{r.repName}</p>
-          </button>
-        ))}
-      </div>
+      {!submitted[data['currentLevel']] ? (
+        <div className="grid grid-cols-1 gap-5 w-full h-[100vh] bg-[#F4F4F4] p-5">
+          {rep.map((r) => (
+            <button
+              className="flex items-center justify-center w-full h-full rounded-xl bg-[#FDD800] disabled:bg-[#FDF100]"
+              key={r.index}
+              onClick={() => {
+                alert(
+                  `You have already submitted for ${r.repName} in round ${data['currentLevel']} 😊`
+                );
+                increment(1, r.index);
+                toSubmit();
+              }}
+            >
+              <p>{r.repName}</p>
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="w-full h-[100vh] flex justify-center items-center font-extrabold font-serif">
+          You have already voted for this round! 😊
+        </div>
+      )}
     </>
   ) : null;
 };

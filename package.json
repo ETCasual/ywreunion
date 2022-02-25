@@ -12,8 +12,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactfire": "^4.2.1",
-    "recharts": "^2.1.9",
-    "zustand": "^3.7.0"
+    "recharts": "^2.1.9"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
