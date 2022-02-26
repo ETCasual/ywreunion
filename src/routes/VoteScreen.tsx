@@ -5,7 +5,7 @@ import { useDatabase, useDatabaseObjectData } from 'reactfire';
 const rep = {
   1: [
     {
-      repName: 'LF - TBC',
+      repName: 'LF - Kai Le',
       index: 1,
     },
     {
@@ -13,11 +13,11 @@ const rep = {
       index: 2,
     },
     {
-      repName: 'TM - TBC',
+      repName: 'TM - Xin Long',
       index: 3,
     },
     {
-      repName: 'KL - Mei Shi',
+      repName: 'KL - Zheng Yang',
       index: 4,
     },
   ],
@@ -27,15 +27,15 @@ const rep = {
       index: 1,
     },
     {
-      repName: 'PK - Judy',
+      repName: 'PK - Ka Yan',
       index: 2,
     },
     {
-      repName: 'TM - TBC',
+      repName: 'TM - Pei Siang',
       index: 3,
     },
     {
-      repName: 'KL - Xin Kai',
+      repName: 'KL - Mei Shi',
       index: 4,
     },
   ],
